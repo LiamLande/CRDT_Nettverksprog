@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetSync</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>BetSync</h1>
+          <p id="convergenceStatus" class="status-line">Loading</p>
+        </div>
+        <div class="toolbar">
+          <button id="resetBtn" type="button">Reset</button>
+          <button id="syncBtn" type="button">Sync</button>
+          <button id="pnBtn" type="button">PN failure</button>
+        </div>
+      </header>
+
+      <section class="summary-grid">
+        <article class="panel round-panel">
+          <div class="panel-head">
+            <h2>Round</h2>
+            <span id="roundPhase" class="pill">Unknown</span>
+          </div>
+          <div id="diceFace" class="dice dice-1" aria-label="dice result">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+          <div class="inline-controls">
+            <button id="closeBtn" type="button">Close</button>
+            <select id="diceSelect" aria-label="Dice result">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+              <option value="6">6</option>
+            </select>
+            <button id="resolveBtn" type="button">Resolve</button>
+          </div>
+        </article>
+
+        <article class="panel invariant-panel">
+          <div class="panel-head">
+            <h2>Invariant</h2>
+            <span id="pnValue" class="pill muted">PN: not run</span>
+          </div>
+          <div class="invariant-row">
+            <span>PN-only merge</span>
+            <strong id="pnBalance">-</strong>
+          </div>
+          <div class="invariant-row">
+            <span>Bounded rights</span>
+            <strong id="rightsTotal">-</strong>
+          </div>
+          <div class="meter">
+            <div id="rightsMeter" class="meter-fill"></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="replicas" class="replica-grid"></section>
+
+      <section class="data-grid">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Bets</h2>
+            <span id="betCount" class="pill muted">0</span>
+          </div>
+          <div id="betsTable" class="table"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Log</h2>
+            <span id="logCount" class="pill muted">0</span>
+          </div>
+          <ol id="messages" class="messages"></ol>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
